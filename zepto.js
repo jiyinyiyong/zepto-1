@@ -820,12 +820,13 @@ var Zepto = (function() {
   return $
 })()
 
-
-window.Zepto = Zepto
-'$' in window || (window.$ = Zepto)
-
-
-
+// @@ original loader
+// window.Zepto = Zepto
+// '$' in window || (window.$ = Zepto)
+// @@ modified by jiyinyiyong
+module.exports.$ = Zepto;
+module.exports.Zepto = Zepto;
+// @@ modifications end
 
 
 ;(function($){

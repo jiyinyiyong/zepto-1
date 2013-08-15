@@ -1,11 +1,41 @@
-Zepto.js
-========
 
-Shim repository for the [Zepto.js](http://zeptojs.com/) JavaScript library.
+Zepto-browserify
+------
 
-Package Managers
-----------------
+This is a fork based on [components/zepto](https://github.com/components/zepto).
 
-* [Bower](http://twitter.github.com/bower/): `zepto`
-* [Component](https://github.com/component/component): `components/zepto`
-* [Composer](http://packagist.org/packages/components/zepto): `components/zepto`
+```
+npm install --save zepto-browserify
+```
+
+```js
+$ = require('zepto-browserify').$
+Zepto = require('zepto-browserify').Zepto
+$ === Zepto // true
+```
+
+How I made this:
+
+```
+git rm *json zepto.min.js Makefile
+npm init
+subl zepto.js
+subl README.md
+git diff zepto.js
+```
+
+```diff
+-
+-window.Zepto = Zepto
+-'$' in window || (window.$ = Zepto)
+-
+-
+-
++// @@ original loader
++// window.Zepto = Zepto
++// '$' in window || (window.$ = Zepto)
++// @@ modified by jiyinyiyong
++module.exports.$ = Zepto;
++module.exports.Zepto = Zepto;
++// @@ modifications end
+```

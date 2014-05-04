@@ -1,8 +1,16 @@
 
-Zepto-browserify
+`zepto-browserify`
 ------
 
 This is a fork based on [components/zepto](https://github.com/components/zepto).
+
+Version of Zepto in this repo is `1.1.3`, while I use `1.1.3-x` in module.
+
+Goto Zepto's home page for docs: http://zeptojs.com/
+
+Read more about it in official repo: https://github.com/madrobby/zepto
+
+### Usage
 
 ```
 npm install --save zepto-browserify
@@ -11,31 +19,18 @@ npm install --save zepto-browserify
 ```js
 $ = require('zepto-browserify').$
 Zepto = require('zepto-browserify').Zepto
-$ === Zepto // true
+$ === Zepto // => true
 ```
 
-How I made this:
+### Differece from Zepto
 
-```
-git rm *json zepto.min.js Makefile
-npm init
-subl zepto.js
-subl README.md
-git diff zepto.js
+How I modified this based on code of `1.1.3`:
+
+```js
+window.Zepto = Zepto
+window.$ === undefined && (window.$ = Zepto)
 ```
 
-```diff
--
--window.Zepto = Zepto
--'$' in window || (window.$ = Zepto)
--
--
--
-+// @@ original loader
-+// window.Zepto = Zepto
-+// '$' in window || (window.$ = Zepto)
-+// @@ modified by jiyinyiyong
-+module.exports.$ = Zepto;
-+module.exports.Zepto = Zepto;
-+// @@ modifications end
+```js
+exports.$ = exports.Zepto = Zepto;
 ```

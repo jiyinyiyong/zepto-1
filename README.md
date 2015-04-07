@@ -1,18 +1,22 @@
 
-`zepto-browserify`
+zepto-browserify
 ------
 
-This is a fork based on [components/zepto](https://github.com/components/zepto).
+> Since Zepto does not provide npm package officially, here's my personal copy of Zepto.
+  Goto Zepto's home page for docs: http://zeptojs.com/
+  Read more about it in official repo: https://github.com/madrobby/zepto
 
-Version of Zepto in this repo is `1.1.3`, while I use `1.1.3-x` in module.
+This package is based on [components/zepto](https://github.com/components/zepto).
 
-Goto Zepto's home page for docs: http://zeptojs.com/
+Current version of Zepto: `1.1.6`.
 
-Read more about it in official repo: https://github.com/madrobby/zepto
+Version of this repo: `1.1.6-1`.
+
+See official releases: https://github.com/madrobby/zepto/releases
 
 ### Usage
 
-```
+```text
 npm install --save zepto-browserify
 ```
 
@@ -22,15 +26,19 @@ Zepto = require('zepto-browserify').Zepto
 $ === Zepto // => true
 ```
 
-### Differece from Zepto
+### Changes from Zepto
 
-How I modified this based on code of `1.1.3`:
+Changes I made at line `886`:
 
 ```js
 window.Zepto = Zepto
 window.$ === undefined && (window.$ = Zepto)
+
+// Added by github/jiyinyiyong to create an npm package
+exports.Zepto = window.Zepto
+exports.$ = window.$
 ```
 
-```js
-exports.$ = exports.Zepto = Zepto;
-```
+### License
+
+MIT https://github.com/madrobby/zepto/blob/225f93e3dcbd6bfb433267e157a744c02176516c/MIT-LICENSE
